@@ -29,6 +29,12 @@ Fiber v2.52.3 has a bug [#2936](https://github.com/gofiber/fiber/issues/2936) th
 
 This repository can be used to validate the bug and test the fix.
 
+**To validate the bug, follow these steps**:
+
+Run the sample as described below.
+
+**To test the fix, follow these steps**:
+
 Replace the Fiber v2.52.3 module with a local copy of Fiber with the fix [#2937](https://github.com/gofiber/fiber/pull/2937).
 
 **Checkout the fix**:
