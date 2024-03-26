@@ -46,10 +46,10 @@ cd fiber
 git checkout 2936-cors-error
 ```
 
-To replace the Fiber module with a local copy, update the go.mod file to point to the local Fiber repository.
+To replace the Fiber module with a local copy, update the go.mod file to point to the local Fiber repository (replace the path with the correct path to the Fiber repository):
 
 ```go.mod
-replace github.com/gofiber/fiber/v2 v2.52.3 => ../Documents/GitHub/fiber
+replace github.com/gofiber/fiber/v2 v2.52.3 => ../fiber
 ```
 
 ## How to run
