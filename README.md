@@ -25,7 +25,7 @@ cd fiber-cors-middleware-validation-sample
 
 ## Known Issues
 
-Fiber v2.52.3 has a [bug](https://github.com/gofiber/fiber/issues/2936) that prevents the CORS middleware from working correctly.
+Fiber v2.52.3 has a bug [#2936](https://github.com/gofiber/fiber/issues/2936) that prevents the CORS middleware from working correctly.
 
 This repository can be used to validate the bug and test the fix.
 
