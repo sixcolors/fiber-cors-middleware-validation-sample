@@ -99,14 +99,9 @@ func main() {
 }
 
 /*
-To test the CORS policy, add the following lines to /etc/hosts:
+To test the CORS policy, you can also use the following curl command:
 
-127.0.0.1 first-url.com
-127.0.0.1 second-url.com
-
-then you can use the following curl command:
-
-curl -H "Origin: http://first-url.com" \
+curl -H "Origin: http://localhost:8080" \
      -H "Access-Control-Request-Method: GET" \
      -H "Access-Control-Request-Headers: Origin, Content-Type, Accept" \
      -X OPTIONS --verbose \
