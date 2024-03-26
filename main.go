@@ -28,8 +28,8 @@ func main() {
                 <button id="getButton">Make GET Request</button>
                 <button id="postButton">Make Post Request</button>
 				<button id="optionsButton">Make OPTIONS Request (Non-CORS)</button>
-                <p>To test Cross-Origin requests from an <strong>allowed</strong> host, visit the <a href="http://localhost:8080">http://localhost:8080</a></p>
-				<p>To test Cross-Origin requests form a <strong>non-allowed</strong> host, visit <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a></p>
+                <p>To test Cross-Origin requests form an <strong>Allowed</strong> host visit <a href="http://localhost:8080">http://localhost:8080</a></p>
+				<p>To test Cross-Origin requests form an <strong>Non-Allowed</strong> host visit <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a></p>
                 <script>
                     document.getElementById('getButton').addEventListener('click', () => {
                         fetch('http://localhost:3000/hello')
