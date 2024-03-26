@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
                 <button id="preflightButton">Make CORS POST (Preflight) Request</button>
                 <p id="allowedInfo">To test Cross-Origin requests form an <strong>Allowed</strong> host visit <a href="http://localhost:8080/">http://localhost:8080/</a></p>
                 <p id="notAllowedInfo">To test Cross-Origin requests form a <strong>Non-Allowed</strong> host visit <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a></p>
-                <p>To test same-origin GET, POST, and OPTIONS requests visit <a href="http://localhost:3000/">http://localhost:3000/</a></p>
+                <p>To test Same-Origin GET, POST, and OPTIONS requests visit <a href="http://localhost:3000/">http://localhost:3000/</a></p>
                 <script>
                     document.getElementById('corsButton').addEventListener('click', () => {
                         fetch('http://localhost:3000/hello')
