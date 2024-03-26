@@ -20,11 +20,27 @@ app.get('/', (req, res) => {
                 <p id="notAllowedInfo">To test Cross-Origin requests form a <strong>Non-Allowed</strong> host visit <a href="http://127.0.0.1:8080/">http://127.0.0.1:8080/</a></p>
                 <p>To test Same-Origin GET, POST, and OPTIONS requests visit <a href="http://localhost:3000/">http://localhost:3000/</a></p>
                 <script>
+                    let allowedHost = document.location.hostname === 'localhost';
                     document.getElementById('corsButton').addEventListener('click', () => {
                         fetch('http://localhost:3000/hello')
-                            .then(response => response.text())
+                            .then(response => {
+                                if (!allowedHost && response.ok) {
+									throw new Error('Response is not blocked on Non-Allowed Host for CORS request');
+								}
+                                return response.text();
+                            })
                             .then(data => alert('Response from CORS request: ' + data))
-                            .catch(error => alert('Error:', error));
+                            .catch(error => {
+                                if (error instanceof TypeError && (error.message === 'Failed to fetch' || error.message === 'Load failed')) {
+                                    if (!allowedHost) {
+                                        alert('Preflight request failed as expected');
+                                    } else {
+                                        alert('Preflight request failed, but it should not have');
+                                    }
+                                    return;
+                                }
+                                alert('Error: ' + error.message);
+                            });
                     });
                     document.getElementById('preflightButton').addEventListener('click', () => {
                         fetch('http://localhost:3000/api/1', {
@@ -35,15 +51,25 @@ app.get('/', (req, res) => {
                             body: JSON.stringify({ key: 'value' }),
                         })
                             .then(response => {
-                                if (response.headers.has('Obvious-Header')) {
-                                    throw new Error('Obvious-Header is present in a Preflight request');
-                                  }
-                                  return response.json();
+                                if (!allowedHost && response.ok) {
+									throw new Error('Response is not blocked on Non-Allowed Host for CORS request');
+								}
+                                return response.json();
                             })
                             .then(data => alert('Response from Preflight request: ' + JSON.stringify(data)))
-                            .catch(error => alert('Error:', error));
+                            .catch(error => {
+                                if (error instanceof TypeError && (error.message === 'Failed to fetch' || error.message === 'Load failed')) {
+                                    if (!allowedHost) {
+                                        alert('Preflight request failed as expected');
+                                    } else {
+                                        alert('Preflight request failed, but it should not have');
+                                    }
+                                    return;
+                                }
+                                alert('Error: ' + error.message);
+                            });
                     });
-                    if (document.location.hostname !== 'localhost') {
+                    if (!allowedHost) {
                         document.getElementById('allowedHost').innerText = 'Non-Allowed Host';
                         document.getElementById('notAllowedInfo').style.display = 'none';
                     } else {

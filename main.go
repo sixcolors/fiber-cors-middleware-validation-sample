@@ -40,7 +40,7 @@ func main() {
 								return response.text();
 							})
                             .then(data => alert('Response from GET request: ' + data))
-                            .catch(error => alert('Error:', error));
+                            .catch(error => alert('Error: ' + error.message));
                     });
                     document.getElementById('postButton').addEventListener('click', () => {
                         fetch('http://localhost:3000/api/1', {
@@ -50,14 +50,9 @@ func main() {
                             },
                             body: JSON.stringify({ key: 'value' }),
                         })
-                            .then(response => {
-                                if (response.headers.has('Access-Control-Allow-Origin')) {
-									throw new Error('Access-Control-Allow-Origin header is present in a non-CORS request');
-								}
-								return response.json();
-                            })
+                            .then(response => response.json())
                             .then(data => alert('Response from POST request: ' + JSON.stringify(data)))
-                            .catch(error => alert('Error:', error));
+                            .catch(error => alert('Error: ' + error.message));
                     });
                     document.getElementById('optionsButton').addEventListener('click', () => {
                         fetch('http://localhost:3000/api/1', {
@@ -72,7 +67,7 @@ func main() {
 								}
 								alert('Non-CORS OPTIONS request was successful');
 							})
-                            .catch(error => alert('Error:', error));
+                            .catch(error => alert('Error: ' + error.message));
                     });
                 </script>
             </body>
