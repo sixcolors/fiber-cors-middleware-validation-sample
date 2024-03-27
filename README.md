@@ -25,19 +25,27 @@ cd fiber-cors-middleware-validation-sample
 
 ## Known Issues
 
-Fiber v2.52.3 has a bug [#2936](https://github.com/gofiber/fiber/issues/2936) that prevents the CORS middleware from working correctly.
+~~Fiber v2.52.3 has a bug [#2936](https://github.com/gofiber/fiber/issues/2936) that prevents the CORS middleware from working correctly.~~
 
-This repository can be used to validate the bug and test the fix.
+~~This repository can be used to validate the bug and test the fix.~~
 
-**To validate the bug, follow these steps**:
+**This issue has been resolved in Fiber v2.52.4.**
 
-Run the sample as described below.
+Update the Fiber module to the latest version to resolve the issue:
 
-**To test the fix, follow these steps**:
+```bash
+go get -u github.com/gofiber/fiber/v2
+```
 
-Replace the Fiber v2.52.3 module with a local copy of Fiber with the fix [#2937](https://github.com/gofiber/fiber/pull/2937).
+~~**To validate the bug, follow these steps**:~~
 
-**Checkout the fix**:
+~~Run the sample as described below.~~
+
+~~**To test the fix, follow these steps**:~~
+
+~~Replace the Fiber v2.52.3 module with a local copy of Fiber with the fix [#2937](https://github.com/gofiber/fiber/pull/2937).~~
+
+~~**Checkout the fix**:~~
 
 ```bash
 cd ..
@@ -46,7 +54,7 @@ cd fiber
 git checkout 2936-cors-error
 ```
 
-To replace the Fiber module with a local copy, update the go.mod file to point to the local Fiber repository (replace the path with the correct path to the Fiber repository):
+~~To replace the Fiber module with a local copy, update the go.mod file to point to the local Fiber repository (replace the path with the correct path to the Fiber repository):~~
 
 ```go.mod
 replace github.com/gofiber/fiber/v2 v2.52.3 => ../fiber
