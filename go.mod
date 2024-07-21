@@ -2,7 +2,7 @@ module main
 
 go 1.22.0
 
-require github.com/gofiber/fiber/v2 v2.52.4
+require github.com/gofiber/fiber/v2 v2.52.5
 
 require (
 	github.com/andybalholm/brotli v1.1.0 // indirect
