@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v3"
+	"github.com/gofiber/fiber/v3/middleware/cors"
 )
 
 func main() {
@@ -10,12 +10,12 @@ func main() {
 
 	app.Use(cors.New(
 		cors.Config{
-			AllowOrigins: "http://localhost:8080",
-			AllowHeaders: "Origin, Content-Type, Accept",
+			AllowOrigins: []string{"http://localhost:8080"},
+			AllowHeaders: []string{"Origin", "Content-Type", "Accept"},
 		},
 	))
 
-	app.Get("/", func(c *fiber.Ctx) error {
+	app.Get("/", func(c fiber.Ctx) error {
 		c.Response().Header.SetContentType("text/html")
 		return c.SendString(`
         <html>
@@ -75,17 +75,17 @@ func main() {
     	`)
 	})
 
-	app.Get("/hello", func(c *fiber.Ctx) error {
+	app.Get("/hello", func(c fiber.Ctx) error {
 		return c.SendString("Hello, World 👋!")
 	})
 
-	app.Post("/api/:id", func(c *fiber.Ctx) error {
+	app.Post("/api/:id", func(c fiber.Ctx) error {
 		return c.JSON(fiber.Map{
 			"message": "Hello, API 👋!",
 		})
 	})
 
-	app.Options("/*", func(c *fiber.Ctx) error {
+	app.Options("/*", func(c fiber.Ctx) error {
 		c.Response().Header.Set("Obvious-Header", "Obvious-Value")
 		return c.SendStatus(fiber.StatusNoContent)
 	})
